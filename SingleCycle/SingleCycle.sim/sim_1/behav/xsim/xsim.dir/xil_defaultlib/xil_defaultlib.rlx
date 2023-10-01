@@ -1,0 +1,11 @@
+0.7
+2020.2
+Oct 19 2021
+03:16:22
+C:/Users/lbell/COMPE 475/SingleCycle/SingleCycle/SingleCycle.sim/sim_1/behav/xsim/glbl.v,1663293976,verilog,,,,glbl,,,,,,,,
+C:/Users/lbell/COMPE 475/SingleCycle/SingleCycle/SingleCycle.srcs/sim_1/new/tb_data_path.v,1663568657,verilog,,,,tb_data_path,,,,,,,,
+C:/Users/lbell/COMPE 475/SingleCycle/SingleCycle/SingleCycle.srcs/sources_1/new/alu.v,1663293977,verilog,,C:/Users/lbell/COMPE 475/SingleCycle/SingleCycle/SingleCycle.srcs/sources_1/new/data_memory.v,,alu,,,,,,,,
+C:/Users/lbell/COMPE 475/SingleCycle/SingleCycle/SingleCycle.srcs/sources_1/new/data_memory.v,1663293977,verilog,,C:/Users/lbell/COMPE 475/SingleCycle/SingleCycle/SingleCycle.srcs/sources_1/new/data_path.v,,data_memory,,,,,,,,
+C:/Users/lbell/COMPE 475/SingleCycle/SingleCycle/SingleCycle.srcs/sources_1/new/data_path.v,1663564012,verilog,,C:/Users/lbell/COMPE 475/SingleCycle/SingleCycle/SingleCycle.srcs/sources_1/new/mux.v,,data_path,,,,,,,,
+C:/Users/lbell/COMPE 475/SingleCycle/SingleCycle/SingleCycle.srcs/sources_1/new/mux.v,1663567225,verilog,,C:/Users/lbell/COMPE 475/SingleCycle/SingleCycle/SingleCycle.srcs/sources_1/new/register_file.v,,mux,,,,,,,,
+C:/Users/lbell/COMPE 475/SingleCycle/SingleCycle/SingleCycle.srcs/sources_1/new/register_file.v,1663561259,verilog,,C:/Users/lbell/COMPE 475/SingleCycle/SingleCycle/SingleCycle.srcs/sim_1/new/tb_data_path.v,,register_file,,,,,,,,
