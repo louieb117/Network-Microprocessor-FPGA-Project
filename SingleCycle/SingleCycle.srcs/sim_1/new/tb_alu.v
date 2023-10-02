@@ -2,68 +2,67 @@
 
 module tb_alu;
 
-    // Word Lengths 
-    parameter AWL = 32;
-    parameter DWL = 16;
-    
-        
     // Control Signals
-    reg CLK; 
-    reg DMWE;
+    reg CLK;
+    // Word Lengths 
+    parameter IWL = 32;
+    parameter SWL = 3;
+    parameter OWL = 32;
     
     // Input Signals
-    reg [AWL-1:0] DMA;
-    reg [DWL-1:0] DMWD;
+    reg [IWL-1:0] A;
+    reg [IWL-1:0] B;
+    
+    // Select Signals
+    reg [SWL-1:0] SEL;
     
     // Output Signals
-    wire [DWL-1:0] DMRD;
+    wire [OWL-1:0] OUT;
+    wire CARRY;
     
     // Clock Generation
     initial CLK <= 0;
         always #10 CLK <= ~CLK;
     
     // Module Under Test
-    data_memory DM01(
-        .CLK(CLK), 
-        .DMWE(DMWE), 
-        .DMA(DMA),
-        .DMWD(DMWD),
-        .DMRD(DMRD)
+    alu ALU01(
+        .A(A), 
+        .B(B), 
+        .ALU_Sel(SEL),
+        .ALU_Out(OUT),
+        .ALU_CARRY(CARRY)
     );
     
     // Test Bench
     initial begin 
 
-        // load word
+        // ADD
         @(posedge CLK) begin
-            DMA = 32'd4;          
-            DMWD = 16'd64;          
-            DMWE = 1;
+            A = 32'd4;          
+            B = 32'd6;          
+            SEL = 3'b000;
         end
-        @(posedge CLK);
                 
-        // load word
+        // SUB
         @(posedge CLK) begin
-            DMA = 32'd8;          
-            DMWD = 16'd256;          
-            DMWE = 1;
-        end
-        @(posedge CLK);
-        
-        // store word
-        @(posedge CLK) begin
-            DMA = 32'd4;          
-            DMWD = 16'd00;          
-            DMWE = 0;
+            A = 32'd16;          
+            B = 32'd6;          
+            SEL = 3'b001;
         end
         
-        // store word
+        // MUL
         @(posedge CLK) begin
-            DMA = 32'd8;          
-            DMWD = 16'd00;          
-            DMWE = 0;
+            A = 32'd4;          
+            B = 32'd6;          
+            SEL = 3'b010;
         end
         
-        @(posedge CLK);
+        // DIV
+        @(posedge CLK) begin
+            A = 32'd4;          
+            B = 32'd2;          
+            SEL = 3'b011;
+        end
+        
     end    
 endmodule

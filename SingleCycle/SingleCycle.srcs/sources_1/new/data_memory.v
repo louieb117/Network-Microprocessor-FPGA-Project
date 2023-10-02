@@ -33,4 +33,5 @@ module data_memory #(
     
     // asynchronous
     assign DMRD = RAM [DMA];    // Read
+
 endmodule

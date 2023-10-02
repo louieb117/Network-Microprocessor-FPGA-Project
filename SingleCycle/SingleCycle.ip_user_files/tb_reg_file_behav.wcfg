@@ -3,51 +3,59 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="tb_data_memory_behav.wdb" id="1">
+      <db_ref path="tb_alu_behav.wdb" id="1">
          <top_modules>
             <top_module name="glbl" />
-            <top_module name="tb_data_memory" />
+            <top_module name="tb_alu" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="279.001 ns"></ZoomEndTime>
-      <Cursor1Time time="0.000 ns"></Cursor1Time>
+      <ZoomStartTime time="721.854 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,055.630 ns"></ZoomEndTime>
+      <Cursor1Time time="1,000.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="185"></NameColumnWidth>
+      <NameColumnWidth column_width="148"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="8" />
-   <wvobject fp_name="/tb_data_memory/AWL" type="array">
-      <obj_property name="ElementShortName">AWL[31:0]</obj_property>
-      <obj_property name="ObjectShortName">AWL[31:0]</obj_property>
+   <WVObjectSize size="10" />
+   <wvobject fp_name="/tb_alu/IWL" type="array">
+      <obj_property name="ElementShortName">IWL[31:0]</obj_property>
+      <obj_property name="ObjectShortName">IWL[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_data_memory/DWL" type="array">
-      <obj_property name="ElementShortName">DWL[31:0]</obj_property>
-      <obj_property name="ObjectShortName">DWL[31:0]</obj_property>
+   <wvobject fp_name="/tb_alu/SWL" type="array">
+      <obj_property name="ElementShortName">SWL[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SWL[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_alu/OWL" type="array">
+      <obj_property name="ElementShortName">OWL[31:0]</obj_property>
+      <obj_property name="ObjectShortName">OWL[31:0]</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider72">
    </wvobject>
-   <wvobject fp_name="/tb_data_memory/CLK" type="logic">
+   <wvobject fp_name="/tb_alu/CLK" type="logic">
       <obj_property name="ElementShortName">CLK</obj_property>
       <obj_property name="ObjectShortName">CLK</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_data_memory/DMWE" type="logic">
-      <obj_property name="ElementShortName">DMWE</obj_property>
-      <obj_property name="ObjectShortName">DMWE</obj_property>
+   <wvobject fp_name="/tb_alu/A" type="array">
+      <obj_property name="ElementShortName">A[31:0]</obj_property>
+      <obj_property name="ObjectShortName">A[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_data_memory/DMA" type="array">
-      <obj_property name="ElementShortName">DMA[31:0]</obj_property>
-      <obj_property name="ObjectShortName">DMA[31:0]</obj_property>
+   <wvobject fp_name="/tb_alu/B" type="array">
+      <obj_property name="ElementShortName">B[31:0]</obj_property>
+      <obj_property name="ObjectShortName">B[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_data_memory/DMWD" type="array">
-      <obj_property name="ElementShortName">DMWD[15:0]</obj_property>
-      <obj_property name="ObjectShortName">DMWD[15:0]</obj_property>
+   <wvobject fp_name="/tb_alu/SEL" type="array">
+      <obj_property name="ElementShortName">SEL[2:0]</obj_property>
+      <obj_property name="ObjectShortName">SEL[2:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_data_memory/DMRD" type="array">
-      <obj_property name="ElementShortName">DMRD[15:0]</obj_property>
-      <obj_property name="ObjectShortName">DMRD[15:0]</obj_property>
+   <wvobject fp_name="/tb_alu/OUT" type="array">
+      <obj_property name="ElementShortName">OUT[31:0]</obj_property>
+      <obj_property name="ObjectShortName">OUT[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_alu/CARRY" type="logic">
+      <obj_property name="ElementShortName">CARRY</obj_property>
+      <obj_property name="ObjectShortName">CARRY</obj_property>
    </wvobject>
 </wave_config>
