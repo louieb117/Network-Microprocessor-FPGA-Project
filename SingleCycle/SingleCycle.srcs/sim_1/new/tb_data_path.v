@@ -2,6 +2,7 @@
 
 module tb_data_path;
     
+    // word lengths 
     parameter AWL = 5;
     parameter SWL = 3;
     parameter DWL = 32;
@@ -13,11 +14,13 @@ module tb_data_path;
     reg [SWL-1:0] ALU_Sel;
     reg sel_01;
     reg sel_02;
+    
     // input signals
     reg [AWL-1:0] rt;
     reg [AWL-1:0] rs;
     reg [AWL-1:0] rd;
     reg [DWL-1:0] slmm;
+    
     // output signals
     wire [DWL-1:0] RFRD1;
     wire [DWL-1:0] RFRD2;
