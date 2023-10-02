@@ -4,7 +4,6 @@ module tb_reg_file;
 
     // Word Lengths 
     parameter AWL = 5;
-    parameter SWL = 3;
     parameter DWL = 16;
     
         
