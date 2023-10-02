@@ -25,4 +25,5 @@ module alu #(
             default: ALU_Out = A + B;    
         endcase              
     end
+    
 endmodule 

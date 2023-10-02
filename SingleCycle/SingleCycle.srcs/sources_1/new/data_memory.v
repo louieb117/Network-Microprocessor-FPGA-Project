@@ -1,16 +1,17 @@
 `timescale 1ns / 1ps
 
 // Read-First Mode with reset
-module data_memory #(parameter AWL = 32,
-                                DWL = 32,
-                                resetValue = 32'd0)
-   (
-        input CLK, 
-        input DMWE, 
-        input [AWL-1:0] DMA,
-        input [DWL-1:0] DMWD,
-        output wire [DWL-1:0] DMRD
-    );
+module data_memory #(
+    parameter   AWL = 32,
+    parameter   DWL = 32,
+    parameter   resetValue = 32'd0
+)(
+    input CLK, 
+    input DMWE, 
+    input [AWL-1:0] DMA,
+    input [DWL-1:0] DMWD,
+    output wire [DWL-1:0] DMRD
+);
         
     reg [DWL-1:0] RAM [AWL-1:0];    // Memory array
 //    integer i;
@@ -32,5 +33,4 @@ module data_memory #(parameter AWL = 32,
     
     // asynchronous
     assign DMRD = RAM [DMA];    // Read
-
 endmodule
