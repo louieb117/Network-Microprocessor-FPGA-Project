@@ -4,7 +4,7 @@ module tb_data_memory;
 
     // Word Lengths 
     parameter AWL = 32;
-    parameter DWL = 16;
+    parameter DWL = 32;
     
         
     // Control Signals
