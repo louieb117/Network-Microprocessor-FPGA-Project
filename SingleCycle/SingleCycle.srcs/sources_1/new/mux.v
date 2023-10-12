@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module mux#(parameter WL = 0)
+module mux #(parameter WL = 0)
     (
         input sel,   
         input [WL-1:0] a,
