@@ -4,10 +4,10 @@ module alu #(
     parameter   IWL = 32,
     parameter   SWL = 3,
     parameter   OWL = 32,
-    parameter   ADD = 3'b000,
-    parameter   SUB = 3'b001,
-    parameter   MUL = 3'b010,
-    parameter   DIV = 3'b011
+    parameter   ADD = 3'b010,
+    parameter   SUB = 3'b110,
+    parameter   AND = 3'b000,
+    parameter   OR = 3'b001
 )(     
     input signed [IWL-1:0] A,
     input signed [IWL-1:0] B,
@@ -20,8 +20,8 @@ module alu #(
         case(ALU_Sel)
             ADD : ALU_Out = A + B;
             SUB : ALU_Out = A - B; 
-            MUL : ALU_Out = A * B; 
-            DIV : ALU_Out = A / B;
+            AND : ALU_Out = A & B; 
+            OR : ALU_Out = A | B;
             default: ALU_Out = A + B;    
         endcase              
     end
