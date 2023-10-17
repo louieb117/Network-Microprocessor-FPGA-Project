@@ -2,7 +2,6 @@
 
 module tb_instr_memory;
 
-
     // Word Lengths 
     parameter AWL = 32;
     parameter DWL = 32;
@@ -22,7 +21,8 @@ module tb_instr_memory;
         always #10 CLK <= ~CLK;
     
     // Module Under Test
-    instruction_memory IM01(
+    instruction_memory IM01
+    (
         .RST(RST),
         .IMA(IMA),
         .IMRD(IMRD)

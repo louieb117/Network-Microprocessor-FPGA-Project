@@ -1,37 +1,40 @@
 `timescale 1ns / 1ps
 
-module control_unit(
+module control_unit
+(
     input [5:0] Opcode,
     input [5:0] Funct,
     output RFWE,
     output RFDSel,
     output ALUInSel,
-    output ALUSel,
     output Branch,
     output DMWE,
-    output MtoRFSel
+    output MtoRFSel,
+    output [2:0] ALUSel
+
 );
-    reg [7:0] OUT;
+    wire [7:0] OUT;
+    wire [1:0] ALUOp;
     
-    main_decoder MDC01(
+    assign RFWE = OUT[7];
+    assign RFDSel = OUT[6];
+    assign ALUInSel = OUT[5];
+    assign Branch = OUT[4];
+    assign DMWE = OUT[3];
+    assign MtoRFSel = OUT[2];
+    assign ALUOp = OUT[1:0];
+    
+    main_decoder MDC01
+    (
         .Opcode(Opcode),
         .OUT(OUT)
     );
     
-    alu_decoder ADC01(
+    alu_decoder ADC01
+    (
         .Funct(Funct),
         .ALUOp(ALUOp),
-        .ALUsel(ALUsel)
-    ); 
-    
-    
-    
-    assign DMWE = OUT[4];
-    assign MtoRFSel = OUT[3];
-    assign ALUOp = OUT[2:0];
-    
-    
-    
-    
+        .ALUSel(ALUSel)
+    );
     
 endmodule
