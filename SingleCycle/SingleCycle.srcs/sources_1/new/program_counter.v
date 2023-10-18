@@ -3,12 +3,12 @@
 module program_counter#(parameter DWL = 32)
     (
         input CLK,
-        input [DWL-1:0] PC_IN,
-        output reg [DWL-1:0] PC_OUT
+        input [DWL-1:0] PCRefIn,
+        output reg [DWL-1:0] PCRefOut
     );
     
     always @( posedge CLK ) begin
-        PC_OUT <= PC_IN;
+        PCRefOut <= PCRefIn;
     end
     
 endmodule
