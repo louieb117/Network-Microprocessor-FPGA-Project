@@ -8,6 +8,6 @@ module mux #(parameter WL = 0)
         output [WL-1:0] out
     );
     
-    assign out = sel ? a : b;
+    assign out = sel ? b : a;
     
 endmodule
