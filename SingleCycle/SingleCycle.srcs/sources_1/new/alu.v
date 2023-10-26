@@ -8,7 +8,8 @@ module alu #(
     parameter   ADD = 3'b010,
     parameter   SUB = 3'b110,
     parameter   AND = 3'b000,
-    parameter   OR = 3'b001
+    parameter   OR = 3'b001,
+    parameter   SLT = 3'b111
 )(     
     input signed [IWL_A-1:0] A,
     input signed [IWL_B-1:0] B,
@@ -23,6 +24,7 @@ module alu #(
             SUB : ALU_Out = A - B; 
             AND : ALU_Out = A & B; 
             OR : ALU_Out = A | B;
+            SLT : ALU_Out = {A[30:0], B[0]};
             default: ALU_Out = A + B;    
         endcase              
     end
