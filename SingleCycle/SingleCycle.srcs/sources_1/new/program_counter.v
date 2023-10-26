@@ -7,6 +7,8 @@ module program_counter#(parameter DWL = 32)
         output reg [DWL-1:0] PCRefOut
     );
     
+    initial PCRefOut = 32'd0; 
+    
     always @( posedge CLK ) begin
         PCRefOut <= PCRefIn;
     end

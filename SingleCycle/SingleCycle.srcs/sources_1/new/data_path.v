@@ -10,7 +10,8 @@ module data_path#
     // control signals
     input CLK,
     input [31:0] EEPROMDataLine,
-    input [31:0] ARPDataLine    
+    input [31:0] ARPDataLine
+//    input [31:0] PCRefIn  
 );
     wire [31:0] Inst;
     
@@ -20,12 +21,27 @@ module data_path#
     wire [4:0] rd;
     wire [4:0] shamt;
     wire [5:0] Funct;
-    
-    wire [15:0] imm;
-    
-    wire [25:0] jtarget;
-    
+    wire [15:0] imm;    
+    wire [25:0] jtarget;    
     wire [31:0] sImm;
+    
+    wire [31:0] PCRefOut;
+    wire [31:0] PCp1;
+    wire [4:0] rtd;
+    wire [31:0] RFRD2;
+    wire [31:0] ALUIn2;
+    wire [31:0] PCBranch;
+    wire [31:0] RFRD1;
+    wire [2:0] ALUSel;
+    wire [31:0] ALU_Out;
+    wire ALU_Zero;
+    wire Branch;
+    wire PCSel;
+    wire DMWE;
+    wire [31:0] DMOut;
+    wire [1:0] MtoRFSel;
+    wire [31:0] MWD;
+    wire [31:0] PCRefIn;
     
     assign Opcode = Inst[31:26];
     assign rs = Inst[25:21];
@@ -41,6 +57,8 @@ module data_path#
     assign sImm[15:0] = imm[15:0];
     assign sImm[31:16] = imm[15];
     
+    assign PCSel = ALU_Zero && Branch;
+    
     control_unit CU01
     (        
         .Opcode(Opcode),
@@ -54,11 +72,11 @@ module data_path#
         .ALUSel(ALUSel)
     );
     
-    mux #(.WL(32)) MX_PCSel
+    mux #(.WL_a(32), .WL_b(32)) MX_PCSel
     (
         .sel(PCSel), 
         .a(PCp1), 
-        .b(PCBranch), 
+        .b(PCBranch),
         .out(PCRefIn)
     );
     
@@ -94,15 +112,15 @@ module data_path#
         .RFRD2(RFRD2)
     );
     
-    mux #(.WL(AWL)) MX_RFD_IN
+    mux #(.WL_a(AWL), .WL_b(AWL)) MX_RFD_IN
     (
-        .sel(sel_01), 
+        .sel(RFDSel), 
         .a(rt), 
         .b(rd), 
         .out(rtd)
     );    
     
-    mux #(.WL(DWL)) MX_ALUIn2
+    mux #(.WL_a(5), .WL_b(32)) MX_ALUIn2
     (
         .sel(ALUInSel), 
         .a(RFRD2), 
@@ -114,14 +132,14 @@ module data_path#
     (
         .A(sImm), 
         .B(PCp1), 
-        .ALU_Out(PCp1)
+        .ALU_Out(PCBranch)
     );
         
     alu ALU01
     (
         .A(RFRD1), 
         .B(ALUIn2), 
-        .ALU_Sel(ALU_Sel), 
+        .ALU_Sel(ALUSel), 
         .ALU_Out(ALU_Out), 
         .ALU_CARRY(ALU_Zero)
     );
@@ -138,7 +156,7 @@ module data_path#
     mux_4 MX_RFSel
     (
         .sel(MtoRFSel),
-        .a(ALUOut),
+        .a(ALU_Out),
         .b(DMOut),
         .c(),
         .d(),

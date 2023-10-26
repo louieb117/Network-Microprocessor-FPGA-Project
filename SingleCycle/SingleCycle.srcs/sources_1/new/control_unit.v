@@ -9,7 +9,7 @@ module control_unit
     output ALUInSel,
     output Branch,
     output DMWE,
-    output MtoRFSel,
+    output [1:0] MtoRFSel,
     output [2:0] ALUSel
 
 );
