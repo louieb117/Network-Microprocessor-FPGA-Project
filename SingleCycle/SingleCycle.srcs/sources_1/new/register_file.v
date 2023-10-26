@@ -1,7 +1,8 @@
 `timescale 1ns / 1ps
 
 // Read-First Mode with reset
-module register_file #(
+module register_file 
+#(
     parameter   AWL = 5,
     parameter   DWL = 32,
     parameter   resetValue = 0
@@ -17,6 +18,7 @@ module register_file #(
 );
     reg [DWL-1:0] RAM [2**AWL-1:0];    // Memory array
     integer i;
+    
     initial begin 
         for(i = 0; i < DWL-1; i = i + 1)begin
             RAM [i] = 0;
